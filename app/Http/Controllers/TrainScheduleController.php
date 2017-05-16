@@ -32,4 +32,15 @@ class TrainScheduleController extends Controller
             ['status'=>'successful']
         );
     }
+
+    public function test(){
+        $email = 'a@b.com';
+        $message = 'wonderful app bro';
+        $token = 'asdasdsadsdsdadsadd';
+
+        $sql = "INSERT INTO feedback (email,message)  VALUES (?,?)";
+        DB::insert($sql,[$email,$message]);
+
+        echo "done";
+    }
 }
