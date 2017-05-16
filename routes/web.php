@@ -21,8 +21,3 @@ Route::post('train_schedule_feedback',array(
     'as'=>'TrainScheduleAppFeedbackRequest',
     'uses'=>'TrainScheduleController@insertFeedback'
 ));
-
-Route::get('test', array (
-    'as'=>'ShowIndexPage',
-    'uses'=>'TrainScheduleController@test'
-));
