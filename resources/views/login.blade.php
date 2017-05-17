@@ -2,13 +2,10 @@
 
 @section('body_content')
     <div class="container">
-        <div style="margin-top: 120px">
+        <div>
+            <br><br><br><br>
             <h1 class="text-info text-center">Train Schedule Feedback <br>Dashboard</h1>
-            @if($agent->isMobile())
-
-            @else
-                <br><br><br><br>
-            @endif
+            <br><br><br><br>
             <h3 class="text-info text-center">Login to continue</h3>
             {!! Form::open(['url'=>'login', 'method'=>'post', 'role'=>'form']) !!}
             <div class="row">
