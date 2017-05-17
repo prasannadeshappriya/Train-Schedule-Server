@@ -1,0 +1,43 @@
+For Herokuapp WebSite / Localhost
+    - Change database.php
+    - Change https settings for
+            Change AppServiceProvider.php
+            Change config/app.php
+
+
+1) Install Agent
+        - composer require jenssegers/agent
+2) Create the service provider
+        - php artisan make:provider AgentServiceProvider
+3) In config/app.php
+        - App\Providers\AgentServiceProvider::class,
+4) in app/providers/AgentServiceProvider.php
+
+        <?php
+
+        namespace App\Providers;
+
+        use View;
+        use Jenssegers\Agent\Agent;
+        use Illuminate\Support\ServiceProvider;
+
+        class AgentServiceProvider extends ServiceProvider
+        {
+            public function boot()
+            {
+                $agent = new Agent();
+
+                View::share('agent', $agent);
+            }
+
+            public function register()
+            {
+                //
+            }
+        }
+
+5) Then inside your views
+
+        @if ($agent->isMobile())
+            Show mobile stuff...
+        @endif
