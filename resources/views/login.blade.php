@@ -5,7 +5,7 @@
         <div style="margin-top: 120px">
             <h1 class="text-info text-center">Train Schedule Feedback <br>Dashboard</h1>
             @if($agent->isMobile())
-                <br><br>
+
             @else
                 <br><br><br><br>
             @endif
