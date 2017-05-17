@@ -3,7 +3,11 @@
 @section('body_content')
     <div class="container">
         <div>
-            <br><br><br><br><br>
+            @if($agent->isMobile())
+                <br><br>
+            @else
+                <br><br><br><br><br>
+            @endif
             <h1 class="text-info text-center">Train Schedule Feedback <br>Dashboard</h1>
             <br><br><br><br>
             <h3 class="text-info text-center">Login to continue</h3>
