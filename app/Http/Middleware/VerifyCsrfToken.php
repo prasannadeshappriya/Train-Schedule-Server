@@ -12,6 +12,7 @@ class VerifyCsrfToken extends BaseVerifier
      * @var array
      */
     protected $except = [
-        'train_schedule_feedback'
+        'train_schedule_feedback',
+        'login'
     ];
 }
