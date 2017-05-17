@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 class TrainScheduleController extends Controller
 {
     public function index(){
-        return view('welcome');
+        return view('login');
     }
 
     public function insertFeedback(Request $request){
