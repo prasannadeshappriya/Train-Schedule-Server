@@ -4,7 +4,6 @@
     <div class="container">
         <div>
             @if($agent->isMobile())
-                <br>
             @else
                 <br><br><br><br><br>
             @endif

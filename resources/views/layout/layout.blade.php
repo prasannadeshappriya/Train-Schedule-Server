@@ -7,7 +7,7 @@
     {{--<meta http-equiv="Refresh" content="number">--}}
     <link rel="stylesheet" href="{{asset('css/main.css')}}">
 </head>
-<body>
+<body style="margin-bottom: 100px">
     @yield('body_content')
     {{Html::script('js/app.js')}}
 </body>
