@@ -4,7 +4,11 @@
     <div class="container">
         <div style="margin-top: 120px">
             <h1 class="text-info text-center">Train Schedule Feedback <br>Dashboard</h1>
-            <br><br><br><br>
+            @if($agent->isMobile())
+                <br><br>
+            @else
+                <br><br><br><br>
+            @endif
             <h3 class="text-info text-center">Login to continue</h3>
             {!! Form::open(['url'=>'login', 'method'=>'post', 'role'=>'form']) !!}
             <div class="row">

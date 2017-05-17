@@ -9,15 +9,22 @@
             <h1 class="text-info text-center">Train Schedule Feedback <br>Dashboard</h1>
             <br>
             <div class="col-lg-12">
-
-                <div class="col-lg-6">
+                @if($agent->isMobile())
                     @if($session->has('username'))
-                        <h5 class="text-info"> Hello {{$session->get('username')}}</h5>
+                        <h5 class="text-info"> Hello {{$session->get('username')}} [<a href="{{url('logout')}}">LogOut</a>]</h5>
+                    @else
+                        <h5 class="text-info"> Hello user [<a href="{{url('logout')}}">LogOut</a>]</h5>
                     @endif
-                </div>
-                <div class="col-lg-6">
-                    <h5 class="text-info" style="text-align: end"><a href="{{url('logout')}}">LogOut</a> </h5>
-                </div>
+                @else
+                    <div class="col-lg-6">
+                        @if($session->has('username'))
+                            <h5 class="text-info"> Hello {{$session->get('username')}}</h5>
+                        @endif
+                    </div>
+                    <div class="col-lg-6">
+                        <h5 class="text-info" style="text-align: end"><a href="{{url('logout')}}">LogOut</a> </h5>
+                    </div>
+                @endif
             </div>
             <br><br>
             @foreach($arrResult as $feedback)

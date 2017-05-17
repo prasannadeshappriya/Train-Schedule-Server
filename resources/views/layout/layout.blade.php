@@ -7,16 +7,8 @@
     {{--<meta http-equiv="Refresh" content="number">--}}
     <link rel="stylesheet" href="{{asset('css/main.css')}}">
 </head>
-@if($agent->isMobile())
-    <body style="margin-bottom: 1000px">
+<body>
     @yield('body_content')
     {{Html::script('js/app.js')}}
-    </body>
-@else
-    <body>
-    @yield('body_content')
-    {{Html::script('js/app.js')}}
-    </body>
-@endif
-
+</body>
 </html>
