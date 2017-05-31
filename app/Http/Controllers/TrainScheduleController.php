@@ -39,6 +39,7 @@ class TrainScheduleController extends Controller
         $response->setData(
             ['status'=>'successful']
         );
+        return $response;
     }
 
     public function dashboard(){
