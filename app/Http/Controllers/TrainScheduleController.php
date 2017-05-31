@@ -106,8 +106,8 @@ class TrainScheduleController extends Controller
         $sql = "DELETE FROM feedback WHERE email=? AND message=?";
         DB::delete($sql,[$email,$message]);
 
-        $email = str_replace(" ","%",$email);
-        $message = str_replace(" ","%",$message);
+        $email = str_replace(" ","%20",$email);
+        $message = str_replace(" ","%20",$message);
 
         return redirect('dashboard')
             ->with('message','Successfully deleted!')
@@ -117,8 +117,8 @@ class TrainScheduleController extends Controller
     }
 
     public function undoDeleteItem($email=null, $message=null){
-        $email = str_replace("%"," ",$email);
-        $message = str_replace("%"," ",$message);
+        $email = str_replace("%20"," ",$email);
+        $message = str_replace("%20"," ",$message);
         $sql = "INSERT INTO feedback (email,message)  VALUES (?,?)";
         DB::insert($sql,[$email,$message]);
         return redirect('dashboard')
