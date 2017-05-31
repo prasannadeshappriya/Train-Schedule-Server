@@ -30,7 +30,7 @@
             <br><br>
             @if(session()->has('message'))
                 @if(session()->has('delete'))
-                    <p class="text-info text-center" style="color: red">{{session('message')}} [<a href={{url('dashboard/undodelete/'.session('undoEmail').'%'.session('undoMessage'))}}>Undo</a>]</p>
+                    <p class="text-info text-center" style="color: red">{{session('message')}} [<a href={{url('dashboard/undodelete/'.session('email').'/'.session('u_message'))}}>Undo</a>]</p>
                 @else
                     <p class="text-info text-center" style="color: red">{{session('message')}}</p>
                 @endif
@@ -45,7 +45,7 @@
                     </div>
                     <div class="panel-body">
                         <p>{{$feedback['message']}}</p>
-                        <a href="{{url('dashboard/delete/'.$feedback['email'].'%'.$feedback['message'])}}" class="btn btn-default" style="width: 150px; float: right;">Delete</a>
+                        <a href="{{url('dashboard/delete/'.$feedback['email'].'/'.$feedback['message'])}}" class="btn btn-default" style="width: 150px; float: right;">Delete</a>
                     </div>
                 </div>
                 <br>

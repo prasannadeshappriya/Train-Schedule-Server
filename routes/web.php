@@ -38,13 +38,13 @@ Route::post('login',array(
     'uses'=>'TrainScheduleController@login'
 ));
 
-Route::get('dashboard/delete/{data}',array(
+Route::get('dashboard/delete/{email}/{message}',array(
     'as'=>'DeleteItemFromDatabase',
     'uses'=>'TrainScheduleController@deleteItem',
     'middleware'=>'isLogin'
 ));
 
-Route::get('dashboard/undodelete/{data}',array(
+Route::get('dashboard/undodelete/{email}/{message}',array(
     'as'=>'UndoDeleteItemFromDatabase',
     'uses'=>'TrainScheduleController@undoDeleteItem',
     'middleware'=>'isLogin'
