@@ -102,4 +102,36 @@ class TrainScheduleController extends Controller
 
     }
 
+    public function deleteItem($data=null){
+        $arrData = explode("%",$data);
+        if(sizeof($arrData)<2){
+            return redirect('dashboard')
+            ->with('message','Error occurred while deleting data');
+        }
+        $email = $arrData[0];
+        $message = $arrData[1];
+
+        $sql = "DELETE FROM feedback WHERE email=? AND message=?";
+        DB::delete($sql,[$email,$message]);
+
+        return redirect('dashboard')
+            ->with('message','Successfully deleted!')
+            ->with('delete','true')
+            ->with('undoEmail',$email)
+            ->with('undoMessage',$message);
+    }
+
+    public function undoDeleteItem($data=null){
+        $arrData = explode("%",$data);
+        if(sizeof($arrData)<2){
+            return redirect('dashboard')
+                ->with('message','Error occurred while re-inserting data');
+        }
+        $email = $arrData[0];
+        $message = $arrData[1];
+        $sql = "INSERT INTO feedback (email,message)  VALUES (?,?)";
+        DB::insert($sql,[$email,$message]);
+        return redirect('dashboard')
+            ->with('message','Successfully re-inserted!');
+    }
 }

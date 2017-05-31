@@ -38,6 +38,18 @@ Route::post('login',array(
     'uses'=>'TrainScheduleController@login'
 ));
 
+Route::get('dashboard/delete/{data}',array(
+    'as'=>'DeleteItemFromDatabase',
+    'uses'=>'TrainScheduleController@deleteItem',
+    'middleware'=>'isLogin'
+));
+
+Route::get('dashboard/undodelete/{data}',array(
+    'as'=>'UndoDeleteItemFromDatabase',
+    'uses'=>'TrainScheduleController@undoDeleteItem',
+    'middleware'=>'isLogin'
+));
+
 //Train Schedule Mobile App Post Requests
 Route::post('train_schedule_feedback',array(
     'as'=>'TrainScheduleAppFeedbackRequest',
