@@ -32,18 +32,36 @@ class TrainScheduleController extends Controller
         $message = $request['message'];
         $token = $request['token'];
 
-        $sql = "INSERT INTO feedback (email,message)  VALUES (?,?)";
-        DB::insert($sql,[$email,$message]);
+        $sql = "SELECT * FROM feedback WHERE email=? AND message=?";
+        $result = DB::select($sql,[$email,$message]);
+        $resultArr = [];
+        foreach ($result as $row){
+            $resultArr[] = (array) $row;
+        }
 
         $response = new JsonResponse();
         $response->setData(
             ['status'=>'successful']
         );
+
+        if(empty($resultArr)) {
+            $sql = "INSERT INTO feedback (email,message)  VALUES (?,?)";
+            DB::insert($sql, [$email, $message]);
+        }else{
+            if($resultArr[0]['email']==$email && $resultArr[0]['message']==$message){
+                return $response;
+            }else{
+                $sql = "INSERT INTO feedback (email,message)  VALUES (?,?)";
+                DB::insert($sql, [$email, $message]);
+            }
+        }
+
+
         return $response;
     }
 
     public function dashboard(){
-        $sql = "SELECT * FROM feedback WHERE 1";
+        $sql = "SELECT DISTINCT * FROM feedback WHERE 1";
         $result = DB::select($sql);
         $arrResult = [];
         foreach ($result as $row){
